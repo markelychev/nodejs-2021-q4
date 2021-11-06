@@ -13,3 +13,22 @@ const checkRepeat = (flagsStr, argsArr) => {
     }, 0)
   return repats>1
 }
+
+const parseConfig = () => {
+  let cliVal = process.argv.slice(2);
+  for (let key of optionsName.keys()) {
+    if (checkRepeat(key, cliVal)) {
+      showErr(`Повторяющейся параметр ${key}`, 9);
+    }
+    const arrKeys = key.split(' ');
+    arrKeys.forEach(flag => {
+      const flagIndex = cliVal.indexOf(flag);
+      if(flagIndex !== -1) {
+        optionsName.set(key, cliVal[flagIndex + 1]);
+      }  
+    })
+  }
+  return optionsName
+}
+
+module.exports = parseConfig();
