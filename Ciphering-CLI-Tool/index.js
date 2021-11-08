@@ -6,9 +6,11 @@ const ciphers = require('./ciphers/ciphers');
 let a = [];
 
 const createLine = (options) => {
+  const MAX_CONF_ITEM_LENGTH = 2;
   const config = options.get('-c --config').split('-');
+
   return config.map((item) => {
-    if (ciphers[item[0]] == undefined) {
+    if (ciphers[item[0]] == undefined || item.length > MAX_CONF_ITEM_LENGTH) {
       throw new Error('Config Error');
     }
     if (item[0] === 'A') {
