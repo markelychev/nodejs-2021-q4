@@ -3,11 +3,13 @@ const letters = require('../configApp/letters');
 
 class CaeserCipher extends stream.Transform {
   constructor(options = 1) {
+    if (options < 0 || options > 1) {
+      throw new Error('Caeser cipher config error');
+    }
     super(options);
     this.options = options;
   }
   _transform(chunk, encoding, callback) {
-    console.log(this.options);
     let val = chunk
       .toString()
       .split('')
