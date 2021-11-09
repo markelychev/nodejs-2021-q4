@@ -21,10 +21,11 @@ class Atbash extends Transform {
   encode(char) {
     for (let key in letters) {
       if (letters[key].indexOf(char) !== -1) {
-        const charsArr = [...letters[key]];
-        return charsArr.reverse()[letters[key].indexOf(char)];
+        const charsArr = [...letters[key]].reverse();
+        return charsArr[letters[key].indexOf(char)];
       }
     }
+    return char;
   }
 }
 
