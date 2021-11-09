@@ -39,7 +39,8 @@ class CaeserCipher extends stream.Transform {
   decrypt(char) {
     for (let key in letters) {
       if (letters[key].indexOf(char) !== -1) {
-        const i = letters[key].indexOf(char) - this.shift >= 0 ? letters[key].indexOf(char) - this.shift : letters[key].length - this.shift;
+        const charIndex = letters[key].indexOf(char);
+        const i = charIndex >= this.shift ? charIndex - this.shift : letters[key].length - (this.shift - charIndex);
         return letters[key][i];
       }
     }
