@@ -32,7 +32,6 @@ class CaeserCipher extends stream.Transform {
         return letters[key][(letters[key].indexOf(char) + this.shift) % letters[key].length];
       }
     }
-
     return char;
   }
 
@@ -44,7 +43,6 @@ class CaeserCipher extends stream.Transform {
         return letters[key][i];
       }
     }
-
     return char;
   }
 }

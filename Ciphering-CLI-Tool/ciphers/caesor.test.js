@@ -1,7 +1,11 @@
 const Caesor = require('./CaeserCipher');
+const stream = require('stream');
 
 const caesor = new Caesor();
 describe('Test Caesor chiper', () => {
+  test('extends stream ', () => {
+    expect(caesor).toBeInstanceOf(stream);
+  });
   test('method _transform method should be defined', () => {
     expect(caesor._transform).toBeDefined();
   });
